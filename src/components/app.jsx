@@ -1,36 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
+import Layout from "./layout";
 
-class App extends React.Component {
+class App extends Component {
   constructor() {
     super();
-    this.handleButtonClick = this.handleButtonClick.bind(this);
-    this.handleTextChange = this.handleTextChange.bind(this);
-    this.handleReset = this.handleReset.bind(this);
 
-    this.state = {
-      name: "",
-      msg: ""
-    };
+    this.state = {};
   }
-
-  //Handlers
-  handleButtonClick = e => {
-    const nameLen = this.state.name.length;
-    if (nameLen > 0) {
-      this.setState({
-        msg: `You name has ${nameLen} characters including space`
-      });
-    }
-  };
-
-  handleTextChange = e => {
-    this.setState({ name: e.target.value });
-  };
-
-  handleReset = () => {
-    this.setState({ name: "", msg: "" });
-  };
-  //End Handlers
 
   render() {
     let msg;
@@ -41,34 +17,9 @@ class App extends React.Component {
       msg = "";
     }
     return (
-      //do something here where there is a button that will replace the text
-      <div className="uk-container">
-        <label className="uk-form-label">Your name </label>
-        <input
-          type="text"
-          id="txtName"
-          name="txtName"
-          value={this.state.name}
-          onChange={this.handleTextChange}
-          className="uk-input"
-        />
-        <button
-          className="uk-button uk-button-default"
-          id="btnSubmit"
-          onClick={this.handleButtonClick}
-        >
-          Calculate Name Length
-        </button>
-        <button
-          className="uk-button uk-button-default"
-          id="btnReset"
-          onClick={this.handleReset}
-        >
-          Reset All
-        </button>
-        <hr />
-        {msg}
-      </div>
+      <React.Fragment>
+        <Layout {...this.props} />
+      </React.Fragment>
     );
   }
 }

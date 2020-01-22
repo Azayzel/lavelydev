@@ -18,14 +18,14 @@ router.get("/", async (req, res) => {
     <script src="/vendor.js" charset="utf-8"></script>
     </head>
         <body>
-            <div id="reactele">{{{reactele}}}</div>
+            <div id="_app_">{{{_app_}}}</div>
         </body>
   </html>
   `;
 
   const hbsTemplate = hbs.compile(theHtml);
   const reactComp = renderToString(<App />);
-  const htmlToSend = hbsTemplate({ reactele: reactComp });
+  const htmlToSend = hbsTemplate({ _app_: reactComp });
   res.send(htmlToSend);
 });
 
